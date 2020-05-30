@@ -5,4 +5,6 @@
 4. Creating user schema
 5. Saving or posting data in database
 6. Hashing password using bcryptjs
+7. Sending token using JWT & creating middleware to verify token
+8. Post schema and create post route
 

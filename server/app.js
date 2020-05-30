@@ -7,6 +7,9 @@ const {MONGOURI} = require('./key');
 
 require('./models/user');
 
+app.use(express.json());
+app.use(require('./routes/auth'));
+
 mongoose.connect(MONGOURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true 
@@ -16,11 +19,6 @@ mongoose.connect(MONGOURI, {
     } else{
         console.log("Mongodb connected successfuly!");
     }
-});
-
-app.get('/', (req, res) => {
-    console.log("home");
-    res.send("Hello world.");
 });
 
 app.listen(PORT, () => {

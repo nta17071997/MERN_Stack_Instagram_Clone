@@ -1,8 +1,47 @@
-/* ========================================= NAVBAR COMPONENT ================================================= */
-.nav-wrapper {
-    background-color: white;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
 }
-.nav-wrapper a {
-    color: black !important;
-    font-size: 20px;
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  color: #333;
+  background-color: #fafafa;
+}
+a {
+  font-size: 20px;
+  color: #666;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+.container .row {
+  width: 100%;
+}
+/* ========================================= NAVBAR COMPONENT ================================================= */
+.navbar-collapse {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+a.brand-logo {
+  font-family: "Grand Hotel", cursive;
+  font-size: 30px;
+}
+ul.navbar-nav li.nav-item {
+  margin-left: 15px;
+}
+/* ========================================= SIGNIN COMPONENT ================================================= */
+.signin h1, .signup h1 {
+  font-family: "Grand Hotel", cursive;
+}
+.signin .card, .signup .card {
+  box-shadow: 0px 2px 10px #9e9c9c;
+  padding: 30px 20px;
+  margin: 20px 0px;
 }

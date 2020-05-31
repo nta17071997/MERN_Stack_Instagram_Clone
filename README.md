@@ -11,3 +11,4 @@
 9. All post created by me route
 10. Creating react project & adding routing
 11. SignIn & SignUp page UI
+12. Profile page UI

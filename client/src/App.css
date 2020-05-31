@@ -23,6 +23,9 @@ a:hover {
   width: 100%;
 }
 /* ========================================= NAVBAR COMPONENT ================================================= */
+.navbar {
+  border-bottom: 1px solid #ccc;
+}
 .navbar-collapse {
   display: flex;
   flex-direction: row;
@@ -44,4 +47,33 @@ ul.navbar-nav li.nav-item {
   box-shadow: 0px 2px 10px #9e9c9c;
   padding: 30px 20px;
   margin: 20px 0px;
+}
+/* ========================================= PROFILE COMPONENT =============================================== */
+.profile {
+  margin-top: 30px;
+  padding-bottom: 20px;
+}
+.row-profile {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+.infoFollow {
+  display: flex;
+  margin-top: 15px;
+}
+.infoFollow h5 {
+  margin-right: 20px;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+img.item {
+  width: 33%;
+  margin-top: 20px;
 }

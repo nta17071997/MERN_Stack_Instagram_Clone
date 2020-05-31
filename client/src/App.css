@@ -1,0 +1,8 @@
+/* ========================================= NAVBAR COMPONENT ================================================= */
+.nav-wrapper {
+    background-color: white;
+}
+.nav-wrapper a {
+    color: black !important;
+    font-size: 20px;
+}

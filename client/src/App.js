@@ -5,6 +5,7 @@ import Home from "./screens/Home";
 import SignIn from "./screens/SignIn";
 import SignUp from "./screens/SignUp";
 import Profile from "./screens/Profile";
+import CreatePost from "./screens/CreatePost";
 import { BrowserRouter, Route } from "react-router-dom";
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
       </Route>
       <Route path="/profile">
         <Profile />
+      </Route>
+      <Route path="/createpost">
+        <CreatePost />
       </Route>
     </BrowserRouter>
   );

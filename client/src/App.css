@@ -86,3 +86,7 @@ img.item {
 .card-image img {
   width: 100%;
 }
+
+.createPost .card {
+  box-shadow: 0px 2px 10px #9e9c9c;
+}

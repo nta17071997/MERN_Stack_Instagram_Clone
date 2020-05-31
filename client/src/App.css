@@ -77,3 +77,12 @@ img.item {
   width: 33%;
   margin-top: 20px;
 }
+/* ========================================= HOME COMPONENT =============================================== */
+.home .card.home-card {
+  border-radius: 0;
+  margin: 15px 0px;
+  padding: 20px;
+}
+.card-image img {
+  width: 100%;
+}

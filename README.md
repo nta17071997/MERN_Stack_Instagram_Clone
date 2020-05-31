@@ -12,3 +12,4 @@
 10. Creating react project & adding routing
 11. SignIn & SignUp page UI
 12. Profile page UI
+13. Home page UI

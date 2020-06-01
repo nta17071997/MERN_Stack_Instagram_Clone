@@ -15,4 +15,5 @@
 13. Home page UI
 14. Create post page UI
 15. Working on User SignUp & User SignIn by posting data
-16. Uploading image to cloudinary
+16. Uploading image to cloudinary, saving token in local storage & sloving errors
+17. Adding context

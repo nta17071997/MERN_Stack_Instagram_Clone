@@ -22,6 +22,22 @@ a:hover {
 .container .row {
   width: 100%;
 }
+#toast-container{
+  position: absolute;
+  top: 60px !important;
+  right: 30px !important;
+  left: auto !important;
+}
+.toast.red, .toast.green{
+  background: #c62828 !important;
+  padding: 10px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 200;
+}
+.toast.green{
+  background: #388e3c !important;
+}
 /* ========================================= NAVBAR COMPONENT ================================================= */
 .navbar {
   border-bottom: 1px solid #ccc;

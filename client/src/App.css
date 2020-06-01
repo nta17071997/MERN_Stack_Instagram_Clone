@@ -22,21 +22,31 @@ a:hover {
 .container .row {
   width: 100%;
 }
-#toast-container{
+#toast-container {
   position: absolute;
   top: 60px !important;
   right: 30px !important;
   left: auto !important;
 }
-.toast.red, .toast.green{
+.toast.red,
+.toast.green {
   background: #c62828 !important;
   padding: 10px;
   color: #fff;
   font-size: 18px;
   font-weight: 200;
 }
-.toast.green{
+.toast.green {
   background: #388e3c !important;
+}
+input[type="text"] {
+  border: none ;
+  border-bottom: 1px solid #666;
+}
+input[type="text"]:focus {
+  border: none !important;
+  border-bottom: 1px solid #666 !important;
+  outline: 0 !important;
 }
 /* ========================================= NAVBAR COMPONENT ================================================= */
 .navbar {
@@ -56,10 +66,12 @@ ul.navbar-nav li.nav-item {
   margin-left: 15px;
 }
 /* ========================================= SIGNIN COMPONENT ================================================= */
-.signin h1, .signup h1 {
+.signin h1,
+.signup h1 {
   font-family: "Grand Hotel", cursive;
 }
-.signin .card, .signup .card {
+.signin .card,
+.signup .card {
   box-shadow: 0px 2px 10px #9e9c9c;
   padding: 30px 20px;
   margin: 20px 0px;
@@ -101,6 +113,7 @@ img.item {
 }
 .card-image img {
   width: 100%;
+  margin-bottom: 10px;
 }
 
 .createPost .card {

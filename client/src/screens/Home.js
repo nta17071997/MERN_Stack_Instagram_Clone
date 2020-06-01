@@ -10,13 +10,12 @@ const Home = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result.posts);
         setData(result.posts);
       });
   }, []);
   return (
     <div className="container home">
-      <div className="row">
+      <div className="row justify-content-center">
         {data.map((item) => {
           return (
             <div className="col-md-9 card home-card" key={item._id}>

@@ -21,4 +21,4 @@
 19. Fetching post and showing that in home screen
 20. Implementing logout
 21. Getting user post and showing it on profile page
-22. Like & Unlike post node js API
+22. Like & Unlike post nodejs API and reactjs

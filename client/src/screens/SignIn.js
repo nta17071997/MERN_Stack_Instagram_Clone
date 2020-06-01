@@ -4,7 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { UserContext } from "../App";
 
 const SignIn = () => {
-  const {state, dispatch} = useContext(UserContext);
+  const {dispatch} = useContext(UserContext);
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

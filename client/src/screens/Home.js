@@ -7,7 +7,7 @@ const Home = () => {
   useEffect(() => {
     fetch("/allPost", {
       headers: {
-        "Authorization": "An " + localStorage.getItem("jwt"),
+        Authorization: "An " + localStorage.getItem("jwt"),
       },
     })
       .then((res) => res.json())
@@ -20,7 +20,7 @@ const Home = () => {
       method: "put",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "An " + localStorage.getItem("jwt"),
+        Authorization: "An " + localStorage.getItem("jwt"),
       },
       body: JSON.stringify({
         postId: id,
@@ -46,7 +46,7 @@ const Home = () => {
       method: "put",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "An " + localStorage.getItem("jwt"),
+        Authorization: "An " + localStorage.getItem("jwt"),
       },
       body: JSON.stringify({
         postId: id,
@@ -73,7 +73,7 @@ const Home = () => {
       method: "put",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "An " + localStorage.getItem("jwt"),
+        Authorization: "An " + localStorage.getItem("jwt"),
       },
       body: JSON.stringify({
         postId, //postId: postId
@@ -96,13 +96,42 @@ const Home = () => {
       });
   };
 
+  const deletePost = (postId) => {
+    fetch(`/deletepost/${postId}`, {
+      method: "delete",
+      headers: {
+        Authorization: "An " + localStorage.getItem("jwt"),
+      },
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        const newData = data.filter(item => {
+          return item._id !== result._id
+        })
+        setData(newData)
+      }).catch(err => {
+        console.log(err)
+      });
+  };
+
   return (
     <div className="container home">
       <div className="row justify-content-center">
         {data.map((item) => {
           return (
             <div className="col-md-9 card home-card" key={item._id}>
-              <h5>{item.postedBy.name}</h5>
+              <h5>
+                {item.postedBy.name}
+                {item.postedBy._id === state._id && (
+                  <i class="material-icons" 
+                    style={{ float: "right" }}
+                    onClick={() => deletePost(item._id)}
+                  >
+                    delete
+                  </i>
+                )}
+              </h5>
               <div className="card-image">
                 <img alt="" className="" src={item.photo} />
               </div>
@@ -133,7 +162,7 @@ const Home = () => {
                 <p>{item.body}</p>
                 {item.comments.map((record) => {
                   return (
-                    <h6 key={record._id} style={{ fontWeight: "200" }} >
+                    <h6 key={record._id} style={{ fontWeight: "200" }}>
                       <span style={{ fontWeight: "500" }}>
                         {record.postedBy.name}
                       </span>{" "}

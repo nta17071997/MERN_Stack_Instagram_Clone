@@ -23,3 +23,4 @@
 21. Getting user post and showing it on profile page
 22. Like & Unlike post nodejs API and reactjs
 23. Comment post nodejs API and reactjs
+24. Delete post

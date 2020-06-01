@@ -15,7 +15,8 @@ app.use(require('./routes/post'));
 
 mongoose.connect(MONGOURI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true 
+    useUnifiedTopology: true,
+    useFindAndModify: false 
     }, function(err){
     if(err){
         console.log(`Mongodb connected error: ${err}`)

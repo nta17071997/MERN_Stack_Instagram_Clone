@@ -15,7 +15,7 @@ const CreatePost = () => {
         method: "post",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "An " + localStorage.getItem("jwt"),
+          "Authorization": "An " + localStorage.getItem("jwt"),
         },
         body: JSON.stringify({
           title,

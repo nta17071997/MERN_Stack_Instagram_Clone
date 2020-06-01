@@ -20,3 +20,4 @@
 18. Changing Navigation links on saving  
 19. Fetching post and showing that in home screen
 20. Implementing logout
+21. Getting user post and showing it on profile page

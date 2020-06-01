@@ -1,6 +1,20 @@
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { UserContext } from "../App";
 
 const Profile = () => {
+  const [mypics, setMypics] = useState([])
+  const {state} = useContext(UserContext)
+   useEffect(() => {
+     fetch('/mypost', {
+       headers: {
+         "Authorization": "An " + localStorage.getItem("jwt")
+       }
+     }).then(res => res.json())
+     .then(result => {
+       setMypics(result.myPost)
+     })
+   }, [])
+
   return (
     <div className="container profile">
       <div className="row row-profile">
@@ -11,7 +25,7 @@ const Profile = () => {
           />
         </div>
         <div className="col-sm-8">
-          <h4>An</h4>
+  <h4>{state?state.name:"loading"}</h4>
           <div className="infoFollow">
             <h5>40 posts</h5>
             <h5>50 followers</h5>
@@ -21,12 +35,11 @@ const Profile = () => {
       </div>
       <div className="row">
         <div className="gallery col-md-12">
-          <img alt="" className="item" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQVN43RJJHZ49kk1BSFU5mbXpjXhSdPfwC6ETV9LNz81S7XgxQp&usqp=CAU"/>
-          <img alt="" className="item" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQVN43RJJHZ49kk1BSFU5mbXpjXhSdPfwC6ETV9LNz81S7XgxQp&usqp=CAU"/>
-          <img alt="" className="item" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQVN43RJJHZ49kk1BSFU5mbXpjXhSdPfwC6ETV9LNz81S7XgxQp&usqp=CAU"/>
-          <img alt="" className="item" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQVN43RJJHZ49kk1BSFU5mbXpjXhSdPfwC6ETV9LNz81S7XgxQp&usqp=CAU"/>
-          <img alt="" className="item" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQVN43RJJHZ49kk1BSFU5mbXpjXhSdPfwC6ETV9LNz81S7XgxQp&usqp=CAU"/>
-          <img alt="" className="item" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQVN43RJJHZ49kk1BSFU5mbXpjXhSdPfwC6ETV9LNz81S7XgxQp&usqp=CAU"/>
+          {mypics.map(item => {
+            return (
+              <img alt={item.title} className="item" key={item._id} src={item.photo} />
+            )
+          })}
         </div>
       </div>
     </div>

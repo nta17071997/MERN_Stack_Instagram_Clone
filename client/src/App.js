@@ -13,16 +13,15 @@ export const UserContext = createContext();
 
 const Routing = () => {
   const history = useHistory();
-  const {state, dispatch} = useContext(UserContext);
+  const { state, dispatch } = useContext(UserContext);
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
-    if(user){
-      dispatch({type: "USER", payload: user})
-      history.push('/')
-    } else{
-      history.push('/signin')
+    if (user) {
+      dispatch({ type: "USER", payload: user });
+    } else {
+      history.push("/signin");
     }
-  }, [])
+  }, []);
   return (
     <Switch>
       <Route exact path="/">
@@ -47,7 +46,7 @@ const Routing = () => {
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <UserContext.Provider value={{state, dispatch}}>
+    <UserContext.Provider value={{ state, dispatch }}>
       <BrowserRouter>
         <Navbar />
         <Routing />

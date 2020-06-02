@@ -7,6 +7,7 @@ import SignUp from "./screens/SignUp";
 import Profile from "./screens/Profile";
 import UserProfile from "./screens/UserProfile";
 import CreatePost from "./screens/CreatePost";
+import SubscribesUserPosts from "./screens/SubscribesUserPosts";
 import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
 import { reducer, initialState } from "./reducers/userReducer";
 
@@ -42,6 +43,9 @@ const Routing = () => {
       </Route>
       <Route path="/createpost">
         <CreatePost />
+      </Route>
+      <Route path="/myfollowingpost">
+        <SubscribesUserPosts />
       </Route>
     </Switch>
   );

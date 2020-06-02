@@ -5,6 +5,7 @@ import Home from "./screens/Home";
 import SignIn from "./screens/SignIn";
 import SignUp from "./screens/SignUp";
 import Profile from "./screens/Profile";
+import UserProfile from "./screens/UserProfile";
 import CreatePost from "./screens/CreatePost";
 import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
 import { reducer, initialState } from "./reducers/userReducer";
@@ -33,8 +34,11 @@ const Routing = () => {
       <Route path="/signup">
         <SignUp />
       </Route>
-      <Route path="/profile">
+      <Route exact path="/profile">
         <Profile />
+      </Route>
+      <Route path="/profile/:userid">
+        <UserProfile />
       </Route>
       <Route path="/createpost">
         <CreatePost />

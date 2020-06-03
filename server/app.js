@@ -8,6 +8,7 @@ const {MONGOURI} = require('./config/key');
 
 require('./models/user');
 require('./models/post');
+
 app.use(cors());
 app.use(express.json());
 app.use(require('./routes/auth'));
@@ -25,16 +26,6 @@ mongoose.connect(MONGOURI, {
         console.log("Mongodb connected successfuly!");
     }
 });
-
-//npm run build
-if(process.env.NODE_ENV === "production"){
-    app.use(express.static("client/build"))
-    const path = require('path')
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-    })
-}
-
 
 app.listen(PORT, () => {
     console.log("Server is running on ", PORT);

@@ -5,8 +5,8 @@ import { useParams } from "react-router-dom";
 const UserProfile = () => {
   const [userProfile, setUserProfile] = useState(null);
   const { state, dispatch } = useContext(UserContext);
-  const [showFollow, setShowFollow] = useState(true);
   const { userid } = useParams();
+  const [showFollow, setShowFollow] = useState(state ? !state.following.includes(userid) : true);
   useEffect(() => {
     fetch(`/user/${userid}`, {
       headers: {
@@ -100,7 +100,7 @@ const UserProfile = () => {
                   height: "160px",
                   borderRadius: "80px",
                 }}
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQVN43RJJHZ49kk1BSFU5mbXpjXhSdPfwC6ETV9LNz81S7XgxQp&usqp=CAU"
+                src={userProfile.user.pic}
               />
             </div>
             <div className="col-sm-8">

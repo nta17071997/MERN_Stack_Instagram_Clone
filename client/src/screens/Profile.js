@@ -3,7 +3,9 @@ import { UserContext } from "../App";
 
 const Profile = () => {
   const [mypics, setMypics] = useState([]);
-  const { state } = useContext(UserContext);
+  const [image, setImage] = useState("");
+  const [url, setUrl] = useState("");
+  const { state, dispatch } = useContext(UserContext);
   //console.log(state)
   useEffect(() => {
     fetch("/mypost", {
@@ -18,17 +20,84 @@ const Profile = () => {
       });
   }, []);
 
+  useEffect(() => {
+    if (image) {
+      const data = new FormData();
+      data.append("file", image);
+      data.append("upload_preset", "instagram-clone");
+      data.append("cloud_name", "nguyenthanhan");
+
+      fetch("https://api.cloudinary.com/v1_1/nguyenthanhan/image/upload", {
+        method: "post",
+        body: data,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setUrl(data.url);
+
+          fetch("/updatepic", {
+            method: "put",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "An " + localStorage.getItem("jwt"),
+            },
+            body: JSON.stringify({
+              pic: data.url,
+            }),
+          })
+            .then((res) => res.json())
+            .then((result) => {
+              console.log(result);
+              localStorage.setItem(
+                "user",
+                JSON.stringify({ ...state, pic: result.pic })
+              );
+              dispatch({ type: "UPDATEPIC", payload: result.pic });
+              window.location.reload()
+            });
+          
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [image]);
+
+  const updatePhoto = (file) => {
+    setImage(file);
+  };
+
   return (
     <div className="container profile">
       <div className="row row-profile">
-        <div className="col-sm-4 text-center">
-          <img
-            alt=""
-            style={{ width: "160px", height: "160px", borderRadius: "80px" }}
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQVN43RJJHZ49kk1BSFU5mbXpjXhSdPfwC6ETV9LNz81S7XgxQp&usqp=CAU"
-          />
+        <div className="col-sm-4 text-center pr-0">
+          <div>
+            <img
+              alt=""
+              style={{ width: "160px", height: "160px", borderRadius: "80px" }}
+              src={state ? state.pic : "Loading ..."}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="file" className="mb-0 mt-2">
+              Update pic
+            </label>
+            <input
+              type="file"
+              className="form-control-file"
+              onChange={(e) => updatePhoto(e.target.files[0])}
+            />
+          </div>
         </div>
-        <div className="col-sm-8">
+        <div
+          className="col-sm-8 pl-0"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "start",
+          }}
+        >
           <h4>{state ? state.name : "loading"}</h4>
           <h4>{state ? state.email : "loading"}</h4>
           <div className="infoFollow">

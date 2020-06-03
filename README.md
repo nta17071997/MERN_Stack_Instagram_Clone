@@ -26,3 +26,4 @@
 24. Delete post
 25. The profile of other users
 26. Follow & Unfollow user
+27. Adding & updating profile pic of user

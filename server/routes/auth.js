@@ -12,7 +12,7 @@ router.get("/protected", requireLogin, (req, res) => {
 });
 
 router.post("/signup", (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, pic } = req.body;
   if (!name || !email || !password) {
     return res.status(422).json({ error: "Please add all the fields." });
   }
@@ -30,6 +30,7 @@ router.post("/signup", (req, res) => {
           name,
           email,
           password: hashedPassword,
+          pic
         });
         user
           .save()
@@ -47,7 +48,7 @@ router.post("/signup", (req, res) => {
 });
 
 router.post("/signin", (req, res) => {
-  const { email, password, followers, following } = req.body;
+  const { email, password, followers, following, pic } = req.body;
   if (!email || !password) {
     return res.status(422).json({ error: "Please add email or password." });
   }
@@ -67,10 +68,10 @@ router.post("/signin", (req, res) => {
               },
               JWT_SECRET
             );
-            const { _id, name, email, followers, following } = savedUser;
+            const { _id, name, email, followers, following, pic } = savedUser;
             res.json({
               token,
-              user: { _id, name, email, followers, following },
+              user: { _id, name, email, followers, following, pic },
             });
           } else {
             return res.status(422).json({ error: "Invalid email or password" });

@@ -5,7 +5,7 @@ const User = mongoose.model("User");
 const crypto = require('crypto');
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { JWT_SECRET } = require("../key");
+const { JWT_SECRET } = require("../config/key");
 const requireLogin = require("../middleware/requireLogin");
 
 const nodemailer = require('nodemailer');

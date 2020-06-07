@@ -2,12 +2,13 @@ const express = require("express");
 const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
-const {MONGOURI} = require('./key');
+const {MONGOURI} = require('./config/key');
 
 require('./models/user');
 require('./models/post');
+
 app.use(cors());
 app.use(express.json());
 app.use(require('./routes/auth'));

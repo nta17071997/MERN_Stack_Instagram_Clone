@@ -8,8 +8,10 @@ import Profile from "./screens/Profile";
 import UserProfile from "./screens/UserProfile";
 import CreatePost from "./screens/CreatePost";
 import SubscribesUserPosts from "./screens/SubscribesUserPosts";
+import Reset from "./screens/Reset";
 import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
 import { reducer, initialState } from "./reducers/userReducer";
+import NewPassword from "./screens/NewPassword";
 
 export const UserContext = createContext();
 
@@ -46,6 +48,12 @@ const Routing = () => {
       </Route>
       <Route path="/myfollowingpost">
         <SubscribesUserPosts />
+      </Route>
+      <Route exact path="/reset">
+        <Reset />
+      </Route>
+      <Route path="/reset/:token">
+        <NewPassword />
       </Route>
     </Switch>
   );
